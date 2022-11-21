@@ -62,7 +62,6 @@ function App() {
             user?.uid ? <AddEditBlog user={user} setActive={setActive} /> : <Navigate to="/" />
           }
         />
-        <Route path="/about" element={<About />} />
         <Route path="/auth" element={<Auth setActive={setActive} setUser={setUser} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
