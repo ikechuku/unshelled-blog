@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Detail from "./pages/Detail";
 import AddEditBlog from "./pages/AddEditBlog";
-import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import Auth from "./pages/Auth";
