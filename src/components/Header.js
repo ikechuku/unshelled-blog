@@ -1,8 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 const Header = ({ active, setActive, user, handleLogout }) => {
   const userId = user?.uid;
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="container-fluid bg-faded padding-media">
@@ -35,21 +39,28 @@ const Header = ({ active, setActive, user, handleLogout }) => {
                   </li>
                 </Link>
 
-                <Link to="/create" style={{ textDecoration: "none" }}>
+                <div style={{ textDecoration: "none" }}>
                   <li
                     className={`nav-item  nav-link ${active === "create" ? "active" : "border"
                       }`}
-                    onClick={() => setActive("create")}
+                    onClick={() => {
+                      if (userId) {
+                        navigate("/create")
+                        setActive("create")
+                      } else {
+                        toast.warning("Please login to create a post")
+                      }
+                    }}
                   >
                     Create
                   </li>
-                </Link>
+                </div>
 
                 <Link to="/about" style={{ textDecoration: "none" }}>
                   <li
-                    className={`nav-item nav-link`}
+                    className={`nav-item lg:ml-20`}
                   >
-                    <h3 className="heading text-3xl"> Unshelled Blog</h3>
+                    <h3 className="heading lg:ml-20 text-3xl"> Unshelled Blog</h3>
                   </li>
                 </Link>
               </ul>
