@@ -3,6 +3,7 @@ import "./App.css";
 import "./style.scss";
 import "./media-query.css";
 import Home from "./pages/Home";
+import MyPosts from "./pages/MyPosts";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,7 +60,13 @@ function App() {
         <Route
           path="/update/:id"
           element={
-            user?.uid ? <AddEditBlog user={user} setActive={setActive} /> : <Navigate to="/" />
+            <AddEditBlog user={user} setActive={setActive} />
+          }
+        />
+        <Route
+          path="/myposts"
+          element={
+            <MyPosts setActive={setActive} user={user} />
           }
         />
         <Route path="/auth" element={<Auth setActive={setActive} setUser={setUser} />} />
