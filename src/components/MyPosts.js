@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { excerpt } from "../utility";
 
 const BlogSection = ({ blogs, user, handleDelete }) => {
   const userId = user?.uid;
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+    if (user.email === "admin@test.com") {
+      setIsAdmin(true)
+    }
+  }, [])
   const myPosts = blogs.filter(item => item.userId === userId)
   // console.log(myPosts);
   return (
     <div>
       <div className="blog-heading text-start py-2 mb-4">My Posts</div>
-      {myPosts.length ? <>
-        {myPosts?.map((item) => (
+      {(isAdmin ? blogs.length : myPosts.length) ? <>
+        {(isAdmin ? blogs : myPosts)?.map((item) => (
           <div className="row pb-4" key={item.id}>
             <div className="col-md-5">
               <div className="hover-blogs-img">
@@ -36,7 +43,7 @@ const BlogSection = ({ blogs, user, handleDelete }) => {
               <Link to={`/detail/${item.id}`}>
                 <button className="btn btn-read">Read More</button>
               </Link>
-              {userId && item.userId === userId && (
+              {userId && (
                 <div style={{ float: "right" }}>
                   <FontAwesome
                     name="trash"

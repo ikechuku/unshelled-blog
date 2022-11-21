@@ -14,13 +14,11 @@ import { db } from "../firebase";
 import { toast } from "react-toastify";
 import Tags from "../components/Tags";
 import MostPopular from "../components/MostPopular";
-import Trending from "../components/Trending";
 
 const Home = ({ setActive, user }) => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [tags, setTags] = useState([]);
-  const [trendBlogs, setTrendBlogs] = useState([]);
 
   const getTrendingBlogs = async () => {
     const blogRef = collection(db, "blogs");
@@ -30,7 +28,6 @@ const Home = ({ setActive, user }) => {
     querySnapshot.forEach((doc) => {
       trendBlogs.push({ id: doc.id, ...doc.data() });
     });
-    setTrendBlogs(trendBlogs);
   };
 
   useEffect(() => {
