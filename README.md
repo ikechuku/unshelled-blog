@@ -1,4 +1,5 @@
 # Unshelled Blog
+
 [Blog Demo](https://unshelled-blog.netlify.app/)
 Unshelled blog is a blog site for developers to publish and read articles around programming and best practices.
 
@@ -13,6 +14,7 @@ Unshelled blog is a blog site for developers to publish and read articles around
 - User can view trending posts.
 - User can add tags to their posts.
 - User can view all blog tags.
+ #### `admin@test.com` `pass123`
 - admin can edit any blog post
 - admin can delete any blog post
 
