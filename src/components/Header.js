@@ -56,16 +56,26 @@ const Header = ({ active, setActive, user, handleLogout }) => {
                   </li>
                 </div>
 
-                <Link to="/about" style={{ textDecoration: "none" }}>
+                <div style={{ textDecoration: "none" }}>
                   <li
                     className={`nav-item lg:ml-20`}
                   >
-                    <h3 className="heading lg:ml-20 text-3xl"> Unshelled Blog</h3>
+                    <h3 className="heading lg:mx-auto text-3xl pt-2 "> Unshelled Blog</h3>
                   </li>
-                </Link>
+                </div>
               </ul>
               <div className="row g-3">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                  {userId ? <Link to="/myposts" style={{ textDecoration: "none" }}>
+                    <li
+                      className={`nav-item nav-link ${active === "myposts" ? "active" : ""
+                        }`}
+                      onClick={() =>  setActive("myposts")}
+                    >
+                      My Posts
+                    </li>
+                  </Link> : ""
+                  }
                   {userId ? (
                     <>
                       <div className="profile-logo">
@@ -102,9 +112,9 @@ const Header = ({ active, setActive, user, handleLogout }) => {
               </div>
             </div>
           </nav>
-        </div>
-      </div>
-    </nav>
+        </div >
+      </div >
+    </nav >
   );
 };
 
