@@ -7,17 +7,17 @@ const BlogSection = ({ blogs, user, handleDelete }) => {
   const userId = user?.uid;
   return (
     <div>
-      <div className="blog-heading text-start py-2 mb-4 ">All Posts</div>
+      <div className="blog-heading text-start py-2 mb-4">All Posts</div>
       {blogs?.map((item) => (
-        <div className="row py-4 my-5 rounded-sm shadow-sm bg-grey-100 animate-bounce " key={item.id}>
-          <Link to={`/detail/${item.id}`} className="col-md-5">
+        <div className="row pb-4" key={item.id}>
+          <div className="col-md-5">
             <div className="hover-blogs-img">
               <div className="blogs-img">
                 <img src={item.imgUrl} alt={item.title} />
                 <div></div>
               </div>
             </div>
-          </Link>
+          </div>
           <div className="col-md-7">
             <div className="text-start">
               <h6 className="category catg-color">{item.category}</h6>
@@ -30,9 +30,9 @@ const BlogSection = ({ blogs, user, handleDelete }) => {
             <div className="short-description text-start">
               {excerpt(item.description, 120)}
             </div>
-            {/* <Link to={`/detail/${item.id}`}>
+            <Link to={`/detail/${item.id}`}>
               <button className="btn btn-read">Read More</button>
-            </Link> */}
+            </Link>
             {userId && item.userId === userId && (
               <div style={{ float: "right" }}>
                 <FontAwesome

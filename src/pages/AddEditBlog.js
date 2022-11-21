@@ -215,7 +215,7 @@ const AddEditBlog = ({ user, setActive }) => {
               <div className="col-12 py-3">
                 <textarea
                   className="form-control description-box"
-                  placeholder="Description"
+                  placeholder="Content"
                   value={description}
                   name="description"
                   onChange={handleChange}
